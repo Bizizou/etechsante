@@ -32,13 +32,19 @@ Route::get('/adminpanel',[UsersController::class, 'index'])->name('adminpanel')-
 Route::get('/', function () {
     
     return view('welcome');
-})->name("home");
+})->name("home")->middleware(['connexion']);
+
+Route::get('/connexion', function () {
+    
+    return view('login');
+})->name("connexion")->middleware(['guest']);
+
 
 Route::get("/{url}", function() {
     return redirect()->route("home");
-})->where(["url" => "register|login|upload|comments"]);
+})->where(["url" => "register|login|upload|comments|logine"]);
 
-Route::get("/logout", "SessionsController@destroy");
+Route::get("/logout", "SessionsController@destroy")->middleware(['connexion']);
 
 
 Route::post("/register", "RegistrationController@store");
@@ -47,6 +53,11 @@ Route::post("/register", "RegistrationController@store");
 
 
 Route::post('/create',"AdminPanelController@CreateUser")->name('create');
+
+
+Route::post('/modify',"AdminPanelController@ModifyUser")->name('modify');
+
+Route::get('/deleteadmin',"AdminPanelController@DeleteUser")->name('delete')->middleware(['IsAdmin']);
 /*Route::post('/create', function () {
     $user = User::create([
         "username" => 'erre',
@@ -60,24 +71,24 @@ Route::post('/create',"AdminPanelController@CreateUser")->name('create');
 
 Route::post("/login", "SessionsController@store");
 
-Route::get("/users/{id}", "UsersController@show");
+Route::get("/users/{id}", "UsersController@show")->middleware(['connexion']);
 
 Route::post("/avatars", "AvatarsController@store");
 
 Route::post("/upload", "FilesController@store");
 
 
-Route::get("/files/{id}", "FilesController@show");
-Route::get("/files/{fileId}/comments", "CommentsController@show");
-Route::get("/files", "FilesController@index");
+Route::get("/files/{id}", "FilesController@show")->middleware(['connexion']);
+Route::get("/files/{fileId}/comments", "CommentsController@show")->middleware(['connexion']);
+Route::get("/files", "FilesController@index")->middleware(['connexion']);
 
-Route::get("/archived", "FilesController@indexArchived");
+Route::get("/archived", "FilesController@indexArchived")->middleware(['connexion']);
 
-Route::get("/download/{id}/{originalName}", "DownloadsController@index");
+Route::get("/download/{id}/{originalName}", "DownloadsController@index")->middleware(['connexion']);
 
-Route::get("/archived/{id}", "DownloadsController@unarchive");
+Route::get("/archived/{id}", "DownloadsController@unarchive")->middleware(['connexion']);
 
-Route::get("/list", "FilesController@indexList");
+Route::get("/list", "FilesController@indexList")->middleware(['connexion']);
 
 Route::post("/comments", "CommentsController@store");
 

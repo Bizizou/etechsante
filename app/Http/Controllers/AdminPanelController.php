@@ -48,6 +48,45 @@ class AdminPanelController extends Controller
         return redirect('adminpanel');
         
     }
+    public function ModifyUser(Request $request)
+    {
+        $hashedPassword = Hash::make($request->input("password"));
+        $id = $request->input("admin_id");
+        $admin= User::find($id);
+        
+
+        if($request->input('username')!=null){
+            $admin->update(['username' => $request->input('username')]);
+        }
+        if($request->input('email')!=null){
+            $admin->update(['email' => $request->input('email')]);
+        }
+        if($request->input('password')!=null){
+            $admin->update(['password' => $hashedPassword]);
+        }
+        if($request->input('role')!=null){
+            $admin->update(['role' => $request->input('role')]);
+        }
+
+        
+
+        return redirect('adminpanel');
+        
+    }
+
+    public function DeleteUser()
+    {
+        $admin_id=$_GET['admin_id'];
+        
+        $admin=User::find($admin_id);
+      
+        $admin->delete();
+     
+
+        return redirect('adminpanel');
+        
+    }
+
 
     /**
      * Display the specified resource.

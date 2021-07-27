@@ -13,17 +13,7 @@
             </form>
         </div>
     </div>
-    @guest
-    <ul class="header-right">
-        <li class="nav-item">
-            <span class="nav-link" style="margin: 10px" href="#loginModal" data-toggle="modal" data-target="#loginModal">Connexion</span>
-        </li>
-
-        <li>
-            <span class="nav-link" style="margin: 10px" href="#registerModal" data-toggle="modal" data-target="#registerModal">Inscription</span>
-        </li>
-    </ul>
-    @endguest
+   
     @auth
     <div class="header-right">
         <div class="user-info-dropdown">

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
-class IsAdmin
+class connexion
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,11 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect('connexion');
-        }else
-            if(Auth::user()->role!='admin'){
-                return back();
-            } 
-        else{
+        
+        if (Auth::check()) {
             return $next($request);
+        }else{
+           return redirect('connexion');
         }
         
     }

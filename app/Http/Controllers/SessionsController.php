@@ -29,7 +29,8 @@ class SessionsController extends Controller
             return response()->json(["error" => "Invalid credentials."]);
         }
 
-        return response()->json(["success" => "Logged in."]);
+        return redirect('/');
+        //return response()->json(["success" => "Logged in."]);
         
     }
 
