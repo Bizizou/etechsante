@@ -12,8 +12,11 @@
                 </div>
             </form>
         </div>
+        @if(Auth::user()->role=="admin")
+        <a type="button" href="/adminpanel" class="btn btn-info">admin panel</a>
+        @endif
     </div>
-   
+    
     @auth
     <div class="header-right">
         <div class="user-info-dropdown">

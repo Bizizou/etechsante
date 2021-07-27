@@ -24,8 +24,8 @@
                           <i class="dw dw-more"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                          <a class="dropdown-item" data-toggle="modal" data-target="#editadmin{{$clinique->id}}" ><i class="dw dw-eye"></i> Modifier</a>
-                          <a class="dropdown-item" data-toggle="modal" data-target="#deleteadmin{{$clinique->id}}" ><i class="dw dw-eye" ><i class="dw dw-download"></i> Supprimer</a>
+                          <a class="dropdown-item" data-toggle="modal" data-target="#editadmin{{$clinique->id}}" > Modifier</a>
+                          <a class="dropdown-item" data-toggle="modal" data-target="#deleteadmin{{$clinique->id}}" > Supprimer</a>
                       </div>
                   </div>
                 </td>
