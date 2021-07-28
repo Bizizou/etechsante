@@ -5,7 +5,7 @@
     
     <!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>E-TechDiag</title>
+	<title>Dashboard Admin</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href={{ asset("vendors/images/apple-touch-icon.png") }}>

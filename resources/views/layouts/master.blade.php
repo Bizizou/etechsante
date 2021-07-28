@@ -54,23 +54,27 @@
             <div class="menu-block customscroll">
                 <div class="sidebar-menu">
                     <ul id="accordion-menu">
+                        @if(Auth::user()->role=="clinique"||"admin")
                         <li>
                             <a href="/list" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-group"></span><span class="mtext">Cas internes</span>
                             </a>
                         </li>
-
+                        @endif
+                        
                         <li>
                             <a href="/files" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-ambulance"></span><span class="mtext">Cas cliniques</span>
                             </a>
                         </li>
-
+                        
+                        @if(Auth::user()->role=="clinique"||"admin")
                         <li>
                             <a href="/archived" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-elderly"></span><span class="mtext">Cas pris en charge</span>
                             </a>
-                        </li>     
+                        </li>
+                        @endif     
                         <li>
                             <a href="https://webnamics.github.io/u-dicom-viewer/" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-eye"></span><span class="mtext">Visualiseur DICOM</span>
